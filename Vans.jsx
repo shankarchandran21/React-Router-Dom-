@@ -2,21 +2,16 @@ import React from "react"
 import { Link, useSearchParams, useLoaderData } from "react-router-dom"
 import { getVans } from "../../api"
 
-//The loader function can keep outside the function
-export function loader() { 
+export function loader() {
     return getVans()
 }
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-
-    
- 
-    const vans = useLoaderData() // for get data
+    const [error, setError] = React.useState(null)
+    const vans = useLoaderData()
 
     const typeFilter = searchParams.get("type")
-
-  
 
     const displayedVans = typeFilter
         ? vans.filter(van => van.type === typeFilter)
@@ -51,8 +46,11 @@ export default function Vans() {
             return prevParams
         })
     }
+    
+    if (error) {
+        return <h1>There was an error: {error.message}</h1>
+    }
 
- 
     return (
         <div className="van-list-container">
             <h1>Explore our van options</h1>
