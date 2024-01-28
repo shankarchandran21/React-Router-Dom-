@@ -10,6 +10,7 @@ import {
 
 import Layout from "./Layout"
 import AuthRequired from "./AuthRequired"
+import Login from "./Login"
 
 
 /*
@@ -33,7 +34,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
         
       </Route>
-        <Route path="/login" element={<h1>Login page</h1>} />
+        <Route path="/login" element={<Login/>} />
 
 
   </Route>

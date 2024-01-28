@@ -5,7 +5,8 @@ export default function AuthRequired() {
         let fakeAuth = true
 
         if(fakeAuth){
-            return<Navigate to="/login"/>
+            // using state we can send messages to login page 
+            return<Navigate to="/login" state={{message:"You must login first"}}/>
         }
 
     return <Outlet />
